@@ -42,7 +42,19 @@ $(function () {
             }
         });
 
-        posted('/product/update', {id:id, name:name, description:description,price:price, token:token, status:status});
+        if(!error) {
+            html.find('button.btn.btn-secondary').click();
+            posted('/product/update', {
+                id: id,
+                name: name,
+                description: description,
+                price: price,
+                token: token,
+                status: status
+            });
+        }else{
+            event.stopPropagation();
+        }
     });
     html.on('click', 'button[data-change="add"]', function(e){
         e.preventDefault();

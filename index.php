@@ -7,12 +7,12 @@ global $logger;
 define('DB_NAME', 'packreg_db');//Решил вывести сюда, потому что удобно. Можно сделать отдельно конфиг.
 define('USE_CREATE_TABLE', 1);//Создать таблицу автоматически
 define('INSER_VALUES', 1);//Заполнить демо товарами
-define('WRITE_LOG', 0);//Вывести лог
+define('WRITE_LOG', 1);//Вывести лог
 
 
+include('app/migration/product.php');//Инклуд который создает Таблицу и заполняет ее.(демо товары)
 include('app/helper.php');
 include('routing/web.php');
-include('app/migration/product.php');//Инклуд который создает Таблицу и заполняет ее.(демо товары)
 
 if(!WRITE_LOG)
     ini_set('error_reporting', E_STRICT);

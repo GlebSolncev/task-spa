@@ -10,6 +10,7 @@ class DB extends PDO{
     const PARAM_db_pass='';
     public $version = '0.1';
 
+
     public function __construct($options=null){
         parent::__construct('mysql:host='.DB::PARAM_host.';port='.DB::PARAM_port.';dbname='.DB::PARAM_db_name,
             DB::PARAM_user,
@@ -17,6 +18,20 @@ class DB extends PDO{
         $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     }
 
+    public function checkTable()
+    {
+        $stmt = $this->prepare('SELECT * FROM product');
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if( ! $row)
+        {
+            return 'Таблиц пуста или ее нет!';
+        }else{
+            return 'Таблица существуе!';
+        }
+
+    }
     public function query($query){ //secured query with prepare and execute
         $args = func_get_args();
         array_shift($args); //first element is not an argument but the query itself, should removed

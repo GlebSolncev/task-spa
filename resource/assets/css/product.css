@@ -43,8 +43,10 @@ tr.freeze::before {
 }
 
 .logger ul {
+    color: white;
     padding: 0px;
 }
+
 .logger li {
-    list-style-type: none;
+    list-style-type: circle;
 }

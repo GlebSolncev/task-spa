@@ -56,6 +56,10 @@ if(!function_exists('logg')) {
     {
         global $logger;
 
+        $db  = new DB;
+        $logger[] = $db->checkTable();
+
+
         ?>
         <div class="logger">
             <ul>

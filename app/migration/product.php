@@ -56,6 +56,6 @@ try {
         }
     }
 } catch (PDOException $e) {
-    dd($e->getMessage());
+    $logger[] = $e->getMessage();
 }
 
