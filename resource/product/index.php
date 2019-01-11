@@ -27,8 +27,8 @@
                 <div class="form-group">
                     <label for="orderby">Сортировка:</label>
                     <select name="orderby" id="orderby" class="form-control">
-                        <option value="">Имя по убыванию</option>
-                        <option value="">Имя по возрастанию</option>
+                        <option value="name:desc">Имя по убыванию</option>
+                        <option value="name:asc">Имя по возрастанию</option>
                     </select>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                     <th scope="row"><?= $item->id ?></th>
                     <td data-name="name"><?= $item->name ?></td>
                     <td data-name="description"><?= $item->description ?></td>
-                    <td data-name="price"><?= $item->price ?></td>
+                    <td data-name="price"><?= $item->price() ?></td>
                     <td data-name="status"><?= $item->status() ?></td>
                     <td data-name="property">
                         <?php if (!$item->status): ?>

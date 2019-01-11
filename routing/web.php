@@ -21,7 +21,8 @@ $routes = [
     'product' => "ProductController@index",
     'product/add' => "ProductController@add",
     'product/update' => "ProductController@update",
-    'product/status' => "ProductController@setStatus"
+    'product/status' => "ProductController@setStatus",
+    'product/orderby' => "ProductController@orderby",
 ];
 
 $path = request_path();

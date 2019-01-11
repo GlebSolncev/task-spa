@@ -123,12 +123,22 @@ $(function () {
                 html.find('table tr.insert').find('th[data-name="id"]').text(data);
                 html.find('table tr.insert').find('button[data-id="insert"]').attr('data-id', data);
             }
-
-            // html.find('body').html($(data).find('body').html());
-
             data_find = $(data).find('table');
             html_find = html.find('table');
             html_find.html(data_find.html());
         });
     }
+
+    html.on('change', 'select#orderby', function(e){
+        e.preventDefault();
+        value = $(this).val();
+        history.pushState('', '', '?orderby='+value);
+
+        $.get('product/orderby', {orderby:value}, function(data){
+            data_find = $(data).find('table');
+            html_find = html.find('table');
+            html_find.html(data_find.html());
+        });
+
+    });
 });

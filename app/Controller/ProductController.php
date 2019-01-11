@@ -29,6 +29,10 @@ class ProductController
 
     public function index()
     {
+        if(isset($_GET) and $_GET['orderby']){
+            return $this->orderby();
+        }
+
         $args = $this->model->all();
         return view($_SERVER['DOCUMENT_ROOT'].'/resource/product/index.php', compact('args'));
     }
@@ -49,6 +53,7 @@ class ProductController
             return $this->index();
         }
         dd('Добавление не сработало');
+        return null;
     }
 
     public function update()
@@ -59,6 +64,7 @@ class ProductController
             $this->model->update($id, $data);
             return $this->index();
         }
+        return null;
     }
 
     public function setStatus()
@@ -73,5 +79,13 @@ class ProductController
                 return $this->index();
         }
         return null;
+    }
+
+    public function orderby()
+    {
+        $order = $_GET['orderby'];
+        $by = explode(':', $order, 2); 
+        $args = $this->model->orderby($by[0], $by[1]);
+        return view($_SERVER['DOCUMENT_ROOT'].'/resource/product/index.php', compact('args'));
     }
 }

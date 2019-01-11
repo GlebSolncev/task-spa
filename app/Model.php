@@ -31,6 +31,22 @@ class Model
         return $return;
     }
 
+    public function orderby($name, $value)
+    {
+        $data = $this->db->select("select * from " . $this->table. " order by {$name} {$value}");
+        foreach ($data as $key => $item):
+            $name_class = get_called_class();
+            $class = new $name_class;
+
+            foreach ($item as $name => $value):
+                $class->$name = $value;
+            endforeach;
+
+            $return[] = $class;
+        endforeach;
+        return $return;
+    }
+
     public function insert($value)
     {
         $values = '"' . implode('","', $value) . '"';

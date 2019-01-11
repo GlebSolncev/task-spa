@@ -54,7 +54,7 @@ class DB extends PDO{
 //    {
 //        $statement = $this->insecureQuery($text);
 //        $statement->execute();
-//        $result = $statement->fetch(PDO::FETCH_ASSOC); 
+//        $result = $statement->fetch(PDO::FETCH_ASSOC);
 //        if($result["id"]){
 //            return $result["id"];
 //        }
