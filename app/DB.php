@@ -4,7 +4,8 @@ class DB extends PDO{
 
     const PARAM_host='localhost';
     const PARAM_port='3306';
-    const PARAM_db_name='packreg_db';
+//    const PARAM_db_name='packreg_db';
+    const PARAM_db_name = DB_NAME;
     const PARAM_user='root';
     const PARAM_db_pass='';
     public $version = '0.1';

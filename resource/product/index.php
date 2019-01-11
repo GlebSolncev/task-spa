@@ -94,7 +94,7 @@
             </tbody>
         <?php else:?>
             <tbody>
-                Товаров нет!
+                <tr><td>Товаров нет!</td></tr>
             </tbody>
         <?php endif ?>
     </table>

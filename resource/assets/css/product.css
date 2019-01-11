@@ -1,6 +1,6 @@
-img{
-    width:100%;
-    height:100%;
+img {
+    width: 100%;
+    height: 100%;
 }
 
 tr.freeze {
@@ -23,7 +23,28 @@ tr.freeze::before {
     color: white;
 }
 
-.loader{
-    width:60px;
-    height:60px;
+.loader {
+    width: 60px;
+    height: 60px;
+}
+
+.logger {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.47);
+    border: 1px solid rgba(127, 91, 92, 0.38);
+    border-radius: 3px;
+    max-height: 150px;
+    overflow-y: scroll;
+    font-size: 8pt;
+    width: 300px;
+}
+
+.logger ul {
+    padding: 0px;
+}
+.logger li {
+    list-style-type: none;
 }

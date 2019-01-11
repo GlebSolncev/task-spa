@@ -50,3 +50,21 @@ if(!function_exists('request_field')) {
         return $result;
     }
 }
+
+if(!function_exists('logg')) {
+    function logg()
+    {
+        global $logger;
+
+        ?>
+        <div class="logger">
+            <ul>
+                <?php foreach($logger as $text):?>
+                    <li><?=$text?></li>
+                <?php endforeach?>
+
+            </ul>
+        </div>
+        <?
+    }
+}
