@@ -1,0 +1,29 @@
+img{
+    width:100%;
+    height:100%;
+}
+
+tr.freeze {
+    background: #f1c9c9;
+}
+
+.table-dark.table-hover tbody tr.freeze:hover {
+    background: #f1c9c9;
+}
+
+tr.freeze::before {
+    color: black;
+    position: absolute;
+    left: 40%;
+    padding-top: 20px;
+}
+
+.popup .modal-body {
+    background-color: #0f8845;
+    color: white;
+}
+
+.loader{
+    width:60px;
+    height:60px;
+}
