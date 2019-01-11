@@ -16,6 +16,7 @@ $(function () {
             case 'edit':
                 modal.find('h5#modalLabel').text("Редактировать товар");
                 id = $(this).attr('data-id');
+                console.log(id);
                 modal.find('.modal-footer button.btn-primary').attr('data-change','edit').text('Сохранить');
                 edit(id);
                 break;
@@ -113,9 +114,10 @@ $(function () {
         body.find('input[name="description"]').val(description);
         body.find('input[name="price"]').val(price);
         body.find('input[name="status"]').val(status);
+        body.find('input[name="id"]').remove();
         body.append("<input type='hidden' name='id' value='"+id+"'>");
 
-        console.log(name, description, price, status);
+        console.log('>> ', id, name, description, price, status);
     }
     function posted(url, collection){
         $.post( url, collection, function( data ) {
@@ -131,14 +133,14 @@ $(function () {
 
     html.on('change', 'select#orderby', function(e){
         e.preventDefault();
+        collection = [];
         value = $(this).val();
-        history.pushState('', '', '?orderby='+value);
+        history.pushState('', '', '?'+value);
 
-        $.get('product/orderby', {orderby:value}, function(data){
+        $.get('product/orderby', value, function(data){
             data_find = $(data).find('table');
             html_find = html.find('table');
             html_find.html(data_find.html());
         });
-
     });
 });

@@ -29,7 +29,7 @@ class ProductController
 
     public function index()
     {
-        if(isset($_GET) and $_GET['orderby']){
+        if(isset($_GET) and $_GET['name'] || $_GET['price']){
             return $this->orderby();
         }
 
@@ -83,9 +83,8 @@ class ProductController
 
     public function orderby()
     {
-        $order = $_GET['orderby'];
-        $by = explode(':', $order, 2); 
-        $args = $this->model->orderby($by[0], $by[1]);
+        $data = request_field($_GET, ['name', 'price']);
+        $args = $this->model->orderby($data);
         return view($_SERVER['DOCUMENT_ROOT'].'/resource/product/index.php', compact('args'));
     }
 }

@@ -16,19 +16,21 @@
 <div class="container">
     <div class="col-md-12" style="padding: 10px">
         <dir class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <p>Добавить товар</p>
                 <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-type="add"
                         data-target="#modal">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
-            <div class="col-md-5 offset-4">
+            <div class="col-md-4 offset-4">
                 <div class="form-group">
                     <label for="orderby">Сортировка:</label>
-                    <select name="orderby" id="orderby" class="form-control">
-                        <option value="name:desc">Имя по убыванию</option>
-                        <option value="name:asc">Имя по возрастанию</option>
+                    <select name="price" id="orderby" class="form-control">
+                        <option value="price=desc">Цена по убыванию</option>
+                        <option value="price=asc">Цена по возрастанию</option>
+                        <option value="name=desc">Имя по убыванию</option>
+                        <option value="name=asc">Имя по возрастанию</option>
                     </select>
                 </div>
             </div>
@@ -52,20 +54,30 @@
         <?php if ($args): ?>
             <tbody>
             <?php foreach ($args as $item): ?>
-                <tr data-id="<?= $item->id ?>" class="<?= (!$item->status) ? "freeze" : "" ?>">
-                    <th scope="row"><?= $item->id ?></th>
-                    <td data-name="name"><?= $item->name ?></td>
-                    <td data-name="description"><?= $item->description ?></td>
-                    <td data-name="price"><?= $item->price() ?></td>
-                    <td data-name="status"><?= $item->status() ?></td>
-                    <td data-name="property">
-                        <?php if (!$item->status): ?>
-                            <button type="button" class="btn btn-danger btn-sm" data-type="reset"
-                                    data-id="<?= $item->id ?>"
-                                    data-toggle="modal" data-target=".bs-example-modal-lg">
-                                Востановить
-                            </button>
-                        <?php else: ?>
+                <?php if(!$item->status):?>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Удалено</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" data-type="reset"
+                                data-id="<?= $item->id ?>"
+                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                            Востановить
+                        </button>
+                    </td>
+                </tr>
+                <?php else: ?>
+                    <tr data-id="<?= $item->id ?>">
+                        <th scope="row"><?= $item->id ?></th>
+                        <td data-name="name"><?= $item->name ?></td>
+                        <td data-name="description"><?= $item->description ?></td>
+                        <td data-name="price"><?= $item->price ?></td>
+                        <td data-name="status"><?= $item->status() ?></td>
+                        <td data-name="property">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-type="edit"
                                     data-id="<?= $item->id ?>" data-target="#modal">
                                 <i class="fas fa-edit"></i>
@@ -74,9 +86,10 @@
                                     data-toggle="modal" data-target=".bs-example-modal-lg">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
-                        <?php endif ?>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                <?php endif ?>
+
             <?php endforeach ?>
             </tbody>
         <?php else:?>

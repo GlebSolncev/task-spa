@@ -31,9 +31,13 @@ class Model
         return $return;
     }
 
-    public function orderby($name, $value)
+    public function orderby($data)
     {
-        $data = $this->db->select("select * from " . $this->table. " order by {$name} {$value}");
+        $key = key($data);
+        $value = $data[$key];
+
+        $data = $this->db->select("select * from {$this->table} order by {$key} {$value};");
+
         foreach ($data as $key => $item):
             $name_class = get_called_class();
             $class = new $name_class;

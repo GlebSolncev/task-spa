@@ -30,9 +30,4 @@ class Product extends Model
         return $text;
     }
 
-    public function price()
-    {
-        return number_format($this->price, 2, ',', ' ');
-
-    }
 }
