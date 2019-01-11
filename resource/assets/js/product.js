@@ -63,6 +63,7 @@ $(function () {
         });
 
         if(!error){
+            html.find('button.btn.btn-secondary').click();
             posted('/product/add', {name:name, description:description, price:price, status:status, token:token});
             html.find('table.table tbody').append('<tr class="insert">\n' +
                 '                <th scope="row" data-name="id"><div class="loader"><img src="/resource/assets/image/loader.gif" alt=""></div></th>\n' +
@@ -80,6 +81,7 @@ $(function () {
                 '                </td>\n' +
                 '            </tr>');
         }else{
+            event.stopPropagation();
             console.error('Ошибка заполнение данных');
         }
 
