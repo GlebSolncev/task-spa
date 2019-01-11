@@ -7,7 +7,6 @@ class DB extends PDO{
     const PARAM_db_name='packreg_db';
     const PARAM_user='root';
     const PARAM_db_pass='';
-
     public $version = '0.1';
 
     public function __construct($options=null){
@@ -51,20 +50,16 @@ class DB extends PDO{
         return $fetch;
     }
 
-    public function insert($text)
-    {
-        $statement = $this->insecureQuery($text);
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-
-
-        dd($statement->lastInsertId());
-        if($result["id"]){
-            return $result["id"];
-        }
-
-        return false;
-    }
+//    public function insert($text)
+//    {
+//        $statement = $this->insecureQuery($text);
+//        $statement->execute();
+//        $result = $statement->fetch(PDO::FETCH_ASSOC); 
+//        if($result["id"]){
+//            return $result["id"];
+//        }
+//        return false;
+//    }
 
 
 }
